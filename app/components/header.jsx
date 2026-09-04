@@ -21,7 +21,7 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <Link href="/Listalunos" className={styles.navLink}>
+              <Link href="/listalunos" className={styles.navLink}>
                 Lista - Alunos
               </Link>
             </li>
