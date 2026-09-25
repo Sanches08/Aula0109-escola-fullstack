@@ -1,12 +1,12 @@
 import db from '../../db/banco.js';
 import { NextResponse } from 'next/server';
 
-export async function ListarAlunos(){
+export async function GET(){
     const alunos = db.prepare('SELECT * FROM alunos ORDER BY nome');
     return NextResponse.json(alunos);
 };
 
-export default async function salvarAlunos(request) {
+export default async function POST(request) {
     try {
         const dados = await request.json();
         const sql = db.prepare('INSERT INTO alunos (nome, idade, serie, ra) VALUES (?, ?, ?, ?)');
@@ -19,7 +19,7 @@ export default async function salvarAlunos(request) {
     }
 }
 
-export async function editarAlunos(request) {
+export async function PUT(request) {
     try {
         const dados = await request.json();
         const sql = db.prepare('UPDATE alunos SET nome = ?, idade = ?, serie = ? WHERE ra = ?');
@@ -30,7 +30,7 @@ export async function editarAlunos(request) {
     }
 }
 
-export async function excluirAlunos(request) {
+export async function DELETE(request) {
     try {
         const dados = await request.json();
         const sql = db.prepare('DELETE FROM alunos WHERE ra = ?');
